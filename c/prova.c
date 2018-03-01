@@ -5,6 +5,7 @@
 
 #define TRUE 1
 #define FALSE 0
+#define MAXSIZE 100
 
 int main(int argc, char **argv) {
   printf("Lain Iwakura\n");
