@@ -20,6 +20,8 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
+	// FIXME: SOME GREAT NEW FEATURE!!
+
 	rc = sqlite3_exec(db, argv[2], callback, 0, &zErrMsg);
 	if(rc != SQLITE_OK) {
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
