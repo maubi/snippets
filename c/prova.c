@@ -8,5 +8,6 @@
 
 int main(int argc, char **argv) {
   printf("Lain Iwakura\n");
+  printf("Ami Kawashima\n");	
   return 0;		// returns 0
 }
