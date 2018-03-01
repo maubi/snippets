@@ -10,6 +10,8 @@ int main(int argc, char **argv) {
 	char *dbname = "prova";
 	char *sql = "SELECT * FROM manga";
 	int rc;
+	
+	// FIXME: PARSE COMMAND-LINE ARGUMENTS
 
 	rc = sqlite3_open(dbname, &db);
 	if(rc) {
