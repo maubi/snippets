@@ -1,6 +1,6 @@
 #!/usr/bin/python
-print "Roll Kran!"
+print "Roll Kran!\n"
 print "Ciao ciao, Mondo!\n"
 print "Hello, World!\n"
-print "Lain Iwakura!"
-print "Ami Kawashima!"
+print "Lain Iwakura!\n"
+print "Ami Kawashima!\n"
