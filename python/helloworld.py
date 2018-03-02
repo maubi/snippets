@@ -1,2 +1,2 @@
 #!/usr/bin/python
-print "Ciao, Mondo!"
+print "Ciao ciao, Mondo!"
