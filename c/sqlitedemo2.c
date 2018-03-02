@@ -50,6 +50,6 @@ int main(int argc, char **argv) {
 	}
 	printf("--------------------------------\n");
 	sqlite3_finalize(stmt1);
-	sqlite3_close(db);
+	sqlite3_close(db);		// close the connection and free the resources
 	return 0;
 }
