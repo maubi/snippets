@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
 	char *zErrMsg = 0;
 	char *dbname = "prova";
 	char *sql = "SELECT * FROM manga";
-	int rc;
+	int rc;				// generic return value
 	
 	// FIXME: PARSE COMMAND-LINE ARGUMENTS
 
