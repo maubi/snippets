@@ -62,17 +62,10 @@ struct node *get_at(int n) {
 
 	if(get_length() < n)
 		return NULL;
-
 	if(n == 1)
 		return tail;
-
-	for(i = 2, p = tail; i<= n; i++) {
-		printf("%d ", i);
-		printf("%u ", p);
+	for(i = 2, p = tail; i<= n; i++)
 		p = p->next;
-		printf("%u ", p);
-		printf("\n");
-	}
 	return p;
 }
 
