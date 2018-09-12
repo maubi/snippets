@@ -9,7 +9,7 @@ public:
 
 class Car: public ICar {
 public:
-	virtual void driveCar() {
+	virtual void driveCar() override {
 		cout << "Car has been driven!" << endl;
 	}
 };
@@ -21,7 +21,6 @@ private:
 public:
 	ProxyCar(int age) {
 		driverAge = age;
-		realCar = Car();
 	}
 	virtual void driveCar() override {
 		if(driverAge >= 18) {
@@ -33,10 +32,10 @@ public:
 };
 
 int main(void) {
-	ProxyCar myCar = ProxyCar(19);
+	auto myCar = ProxyCar(19);
 	myCar.driveCar();
 
-	ProxyCar myCar2 = ProxyCar(15);
+	auto myCar2 = ProxyCar(15);
 	myCar2.driveCar();
 	return 0;
 }
