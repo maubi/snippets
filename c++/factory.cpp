@@ -53,6 +53,9 @@ int main(void) {
 
 	auto myOffRoad = factory2.makeCar();
 	cout << myOffRoad->getType() << endl;
+
+	delete mySedan;
+	delete myOffRoad;
 	return 0;
 }
 
