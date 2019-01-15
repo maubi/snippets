@@ -1,9 +1,8 @@
 <?php
-
-$serverName = 'localhost';
-$userName = 'root';
-$password = '';
-$dbName = 'prova';
+$serverName	= 'localhost';
+$userName	= 'root';
+$password	= 'battosai';
+$dbName		= 'prova';
 
 $conn = new mysqli($serverName, $userName, $password, $dbName);	// connect
 
@@ -22,5 +21,4 @@ if ($result->num_rows > 0) {
 		echo 'ID: ' . $row["id"] . ' TITLE: ' . $row['title'] . "\n";
 	}
 }
-
 ?>
