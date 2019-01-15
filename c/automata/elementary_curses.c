@@ -1,9 +1,19 @@
 // demo.c
 
+/// @file
+/// @author	Mauro Bisiani <bisianimauro@gmail.com>
+/// @version 1.0
+/// @section LICENSE
+/// This program is free software
+
+
 #include <unistd.h>
 #include <ncurses.h>
 #include "elementary_curses.h"
 
+/// Main cicle
+/// @param	none
+/// @return none
 int main(int argc, char *argv[]) {
 
 	unsigned char c_row[ROW_SIZE] = {DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, ALIVE, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD, DEAD};
@@ -36,7 +46,7 @@ int main(int argc, char *argv[]) {
 		
 		// do transition
 		if (iteration != MAX_ITERATIONS) {
-			updateRow(c_row, 3);
+			updateRow(c_row, 3);		// FIXME: use constant
 			y++;
 			iteration++;
 		}
@@ -48,6 +58,12 @@ int main(int argc, char *argv[]) {
 	endwin(); // Restore normal terminal behaviouir
 }
 
+/// Prints a row of the simulation
+/// @param row_p	row content	
+/// @param x horizontal coordinate
+/// @param y vertical coordinate
+/// @param iteration iteration counter
+/// @return none
 void printRow(unsigned char *row_p, int x, int y, int iteration) {
 	int i;
 	for (i = 0; i < ROW_SIZE; i++) {
@@ -61,6 +77,10 @@ void printRow(unsigned char *row_p, int x, int y, int iteration) {
 	return;
 }
 
+/// Updates the status of a row
+/// @param row_p	row content
+/// @param rule		rule number
+/// @return			none
 void updateRow(unsigned char *row_p, int rule) {
 	unsigned char rules[256][8] = {
 		{DEAD, DEAD, DEAD, ALIVE, ALIVE, ALIVE, ALIVE, DEAD},

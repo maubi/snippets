@@ -2,7 +2,7 @@
 
 #define ALIVE			1
 #define DEAD			0
-#define MAX_ITERATIONS		0
+#define MAX_ITERATIONS	500	
 #define ROW_SIZE		150	
 // 0 = use OUT_OF_BOUND value 1: use valid neighbour 2: wrap
 #define WRAPPING		2

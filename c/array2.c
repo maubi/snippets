@@ -5,9 +5,9 @@ void myprint2(char **, int);
 
 int main(void) {
 	char *ar[3] =	{
-						"abc",
-						"def",
-						"ghi"
+						"Lain Iwakura",
+						"Ami Kawashima",
+						"Roll Kran"
 					};
 
 	myprint(ar, 3);
