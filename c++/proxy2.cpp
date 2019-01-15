@@ -31,6 +31,9 @@ public:
 			realCar->driveCar();
 		}
 	}
+	~ProxyCar() {
+		delete realCar;
+	}
 };
 
 int main(void) {
@@ -41,9 +44,3 @@ int main(void) {
 	myCar2->driveCar();
 	return 0;
 }
-
-
-
-
-
-

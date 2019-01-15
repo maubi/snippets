@@ -17,9 +17,6 @@ public:
 	virtual int getType() {
 		return 0;
 	}
-	void foo() {
-		cout << "Foo!" << endl;
-	}
 };
 
 class OffRoad: public ICar {
@@ -31,14 +28,14 @@ public:
 
 class SedanFactory: public CarFactory {
 public:
-	virtual Sedan *makeCar() override {
+	virtual ICar *makeCar() override {
 		return new Sedan;
 	}
 };
 
 class OffRoadFactory: public CarFactory {
 public: 
-	virtual OffRoad *makeCar() override {
+	virtual ICar *makeCar() override {
 		return new OffRoad;
 	}
 };
@@ -49,7 +46,6 @@ int main(void) {
 
 	auto mySedan = factory1.makeCar();
 	cout << mySedan->getType() << endl;
-	mySedan->foo();
 
 	auto myOffRoad = factory2.makeCar();
 	cout << myOffRoad->getType() << endl;
