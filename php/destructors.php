@@ -1,5 +1,4 @@
 <?php
-
 class Anime {
 	private $title;
 
@@ -15,5 +14,4 @@ class Anime {
 
 $sabagebu = new Anime('Sabagebu!');
 unset($sabagebu);
-
 ?>

@@ -53,4 +53,10 @@ $myIterator = new MyIterator($waifus);
 foreach($myIterator as $key => $value) {
 	echo "$key::$value\n";
 }
+
+if($myIterator instanceof Traversable) {
+	echo "------> ITERABLE\n";
+} else {
+	echo "------> NOT ITERABLE\n";
+}
 ?>
