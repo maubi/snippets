@@ -1,5 +1,7 @@
 <?php
 
+// http://php-di.org/doc/understanding-di.html
+
 class Anime {
 	private $title;
 	private $lead;
