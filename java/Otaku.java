@@ -5,7 +5,6 @@ public class Otaku extends Person {
 		super(f, l);
 		anime = a;
 	}
-
 	public void printStr() {
 		super.printStr();
 		System.out.println(anime);

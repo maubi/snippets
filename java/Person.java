@@ -6,7 +6,6 @@ public class Person {
 		firstName = f;
 		lastName = l;
 	} 
-
 	public void printStr() {
 		System.out.println(firstName + lastName);
 	}

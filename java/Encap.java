@@ -29,11 +29,3 @@ public class Encap {
 		novel = val;
 	}
 }
-
-
-
-
-
-
-
-

@@ -10,19 +10,15 @@ public class Car implements IVehicle {
 		doors = d;
 		owner = o;
 	}
-
 	public void drive() {
 		System.out.println("Car is driving.");
 	}
-
 	public void start() {
 		System.out.println("Car has started.");
 	}
-
 	public void stop() {
 		System.out.println("Car has stopped.");
 	}
-
 	public static void main(String [] args) {
 		Car leoncino = new Car("Peugeot 207", 3, "Mauro Bisiani");
 		leoncino.start();
