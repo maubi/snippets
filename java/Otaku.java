@@ -10,3 +10,4 @@ public class Otaku extends Person {
 		System.out.println(anime);
 	}
 }
+
