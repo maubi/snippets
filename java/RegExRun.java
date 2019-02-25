@@ -5,6 +5,7 @@ public class RegExRun {
 	public static void main(String[] args) {
 		String waifus = "Kaya;Ami;Ami;Lain";
 		String pattern = "Ami";
+		String repString = "Chitose";
 		Integer count = 0;
 
 		Pattern p = Pattern.compile(pattern);
@@ -16,5 +17,8 @@ public class RegExRun {
 			System.out.printf("END:   %d\n", m.end());
 			System.out.println();
 		}
+		
+		waifus = m.replaceAll(repString);
+		System.out.println("REPLACED STRING: "+waifus);
 	}
 }
