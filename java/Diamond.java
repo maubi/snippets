@@ -3,6 +3,6 @@ public class Diamond extends Shape {
 		super(c, s);
 	}
 	public void draw() {
-		System.out.printf("Look, a diamond!\n");
+		System.out.printf("%s diamond (scale %d)\n", color, scale);
 	}
 }

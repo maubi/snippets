@@ -3,6 +3,6 @@ public class Circle extends Shape {
 		super(c, s);
 	}
 	public void draw() {
-		System.out.printf("Look, a circle!\n");
+		System.out.printf("%s circle (scale: %d)\n", color, scale);
 	}
 }
