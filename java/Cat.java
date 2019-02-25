@@ -3,9 +3,9 @@ public class Cat extends Animal implements IAnimal {
 		super(n, a);
 	}
 	public void eat() {
-		System.out.println(name + "ate a salmon!");
+		System.out.println(name + " ate a salmon!");
 	}
 	public void travel() {
-		System.out.println(name + "walked 1 mile!");
+		System.out.println(name + " walked 1 mile!");
 	}
 }
