@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flex Model Test #1</title>
+<meta charset="utf-8">
+<style>
+	.container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		background-color: steelblue;
+		width: 1300px;
+		margin: auto;
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+		width: 45%;
+		margin: 15px;
+	}
+
+	.column.column-left {
+		background-color: orange;
+	}
+
+	.column.column-right {
+		background-color: pink;
+	}
+
+	.column > div {
+		margin: 20px;
+		padding: 30px;
+		background-color: grey;
+		color: blue;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="column column-left">
+			<div>Lain</div>
+			<div>Ami</div>
+			<div>Aoba</div>
+		</div>
+		<div class="column column-right">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flex Model Test #1</title>
+<meta charset="utf-8">
+<style>
+	.parent-container {
+		width: 1400px;
+		margin: auto;
+	}
+	.flex-container {
+		display: flex;
+		background-color: orange;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.header {
+		text-align: center;
+		flex: 1 100%;
+		background-color: black;
+		color: white;
+	}
+	.sidebar {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		background-color: lightgreen;
+	}
+	.main {
+		flex: 2;
+		background-color: lightblue;
+		display: flex;
+		flex-direction: column;
+		padding: 15px;
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		display: block;
+		background-color: grey;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		text-align: center;
+		padding: 10px;
+	}
+	li:hover {
+		background-color: black;
+		color: white;
+	}
+	.sidebar {
+		padding: 15px;
+	}
+	.sidebar h2 {
+		margin: 0;
+		padding: 0;
+	}
+	.main > .article {
+		margin: 0;
+		padding: 0;
+		font-family: monospace;
+		font-size: 1.5em;
+		margin-bottom: 10px;
+	}
+	.main > .article:last-child {
+		margin-bottom: 0;
+	}
+</style>
+</head>
+<body>
+	<div class="parent-container">
+	<div class="flex-container">
+		<div class="header"><h1>WAIFUS ARE REAL</h1></div>
+		<div class="sidebar">
+			<h2 class="title">Links</h2>
+			<ul>
+				<li>Suzukaze Aoba</li>
+				<li>Kurata Ami</li>
+				<li>Gabu</li>
+				<li>Hanesaki Ayano</li>
+				<li>Iwakura Lain</li>
+				<li>Violet Evergarden</li>
+			</ul>
+		</div>
+		<div class="main">
+			<p class="article">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae dui sed elit molestie tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec id dignissim diam, quis hendrerit odio. Donec tincidunt diam quis enim interdum porttitor. Ut porttitor libero quis mi hendrerit gravida. Fusce leo nibh, vehicula convallis faucibus ac, malesuada vel velit. Curabitur et fermentum erat, ut tincidunt ligula. Aliquam feugiat leo iaculis, tempor augue ut, cursus risus. Etiam ac varius magna.
+
+Donec ut massa cursus, rhoncus mauris in, tristique elit. Sed varius elit in est eleifend, eu euismod felis sollicitudin. Aenean id risus tempor, placerat nunc vitae, commodo purus. Quisque sit amet purus eu ante vestibulum ultricies. Maecenas iaculis luctus lacus, et cursus enim congue eget. Sed vitae malesuada lacus, vel sodales justo. Sed finibus nunc ac libero consectetur porttitor. Aliquam erat volutpat.
+			</p>
+			<p class="article">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae dui sed elit molestie tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec id dignissim diam, quis hendrerit odio. Donec tincidunt diam quis enim interdum porttitor. Ut porttitor libero quis mi hendrerit gravida. Fusce leo nibh, vehicula convallis faucibus ac, malesuada vel velit. Curabitur et fermentum erat, ut tincidunt ligula. Aliquam feugiat leo iaculis, tempor augue ut, cursus risus. Etiam ac varius magna.
+
+Donec ut massa cursus, rhoncus mauris in, tristique elit. Sed varius elit in est eleifend, eu euismod felis sollicitudin. Aenean id risus tempor, placerat nunc vitae, commodo purus. Quisque sit amet purus eu ante vestibulum ultricies. Maecenas iaculis luctus lacus, et cursus enim congue eget. Sed vitae malesuada lacus, vel sodales justo. Sed finibus nunc ac libero consectetur porttitor. Aliquam erat volutpat.
+			</p>
+		</div>
+		<div class="sidebar">
+			<h2 class="title">Archive</h2>
+			<ul>
+				<li>January</li>
+				<li>February</li>
+				<li>March</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE hmtml>
+<html>
+<head>
+<title>CANVAS EXAMPLE #1</title>
+<meta charset="UTF-8" />
+<style>
+	.canvas {
+		border: 2px solid black;
+	}
+</style>
+</head>
+<body>
+	<canvas class="canvas" id="myPreciousCanvas" width="500" height="500">
+	</canvas>
+
+<script>
+	var canvas = document.getElementById('myPreciousCanvas');
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = '#FFFF00';
+	ctx.fillRect(150, 150, 200, 200);
+	ctx.fillStyle = '#00FFFF';
+	ctx.fillRect(0, 0, 100, 100);
+	ctx.fillStyle = '#FF00FF';
+	ctx.fillRect(400, 400, 100, 100);
+</script>
+</body>
+</html>

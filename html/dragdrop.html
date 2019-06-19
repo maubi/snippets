@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DRAG & DROP</title>
+<meta charset="UTF-8">
+<script>
+function allowDrop(ev) {
+	ev.preventDefault();
+}
+
+function drag(ev) {
+	ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+	ev.preventDefault();
+	var data = ev.dataTransfer.getData("text");
+	ev.target.appendChild(document.getElementById(data));
+}
+</script>
+<style>
+	#div1,#div2 {
+		vertical-align: top;
+		border: 2px solid black;
+		height: 200px;
+		width: 200px;
+		display: inline-block;
+	}
+</style>
+</head>
+<body>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+<p id="draggable-paragraph" draggable="true" ondragstart="drag(event)">Lain Iwakura</p>
+</div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+</div>
+
+</body>
+</html>
