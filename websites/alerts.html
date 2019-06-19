@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alerts</title>
+<meta charset="utf8">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	
+	.container {
+		width: 900px;
+		margin: auto;
+	}
+
+	.alert {
+		border-radius: 20px;
+		padding: 30px;
+		margin: 20px;
+	}
+
+	.alert-success {
+		background-color: #90ee90
+	}
+
+	.alert-danger {
+		background-color: #ee9090;
+	}
+
+	.alert-info {
+		background-color: #9090ee;
+	}
+
+	.alert-icon.icon-danger {
+		color: red;
+	}
+
+	.alert-icon.icon-success {
+		color: green;
+	}
+
+	.alert-icon.icon-info {
+		color: blue;
+	}
+
+	.text-center {
+		text-align: center;
+	}
+
+	.alert span {
+		font-size: 17px;
+		font-weight: bold;
+		font-family: monospace;
+	}
+
+	.alert .alert-icon {
+		font-size: 17px;
+		float: right;
+		margin-right: 10px;
+	}
+
+	h1 {
+		width: 200px;
+		display: block;
+		background-color: black;
+		color: white;
+		margin: auto;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+	<h1>ALERTS</h1>
+	<div class="alert alert-success">
+		<span>Close the world. Open the next!</span> <i class="alert-icon icon-success fa fa-check"></i>
+	</div>
+	<div class="alert alert-danger">
+		<span>Close the world. Open the next!</span> <i class="alert-icon icon-danger fa fa-exclamation-triangle"></i>
+	</div>
+	<div class="alert alert-info">
+		<span>Close the world. Open the next!</span> <i class="alert-icon icon-info fa fa-info-circle"></i>
+	</div>
+</div>
+</body>
+</html>

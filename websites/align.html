@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Vertical Alignment</title>
+<meta charset="utf8">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+<style>
+	body {
+		margin-top: 30px;
+	}
+	
+	.container {
+		width: 1300px;
+		margin: auto;
+	}
+
+	.card {
+		width: 1100px;
+		margin: auto;
+		margin-bottom: 20px;
+		border-radius: 10px;
+	}
+
+	.female {
+		background-color: lightpink;
+	}
+
+	.male {
+		background-color: lightblue;
+	}
+
+	.img-container {
+		display: inline-block;
+		vertical-align: middle;
+		padding: 20px;
+		margin-left: 400px;
+	}
+	
+	.waifu {
+		display: inline-block;
+		vertical-align: middle;
+		padding: 20px;
+		font-size: 20px;
+		width: 400px;
+	}
+
+	.w-name {
+		font-weight: bold;
+		font-size: 30px;
+		margin-bottom: 10px;
+	}
+
+	.img-container img {
+		border-radius: 50%;
+	}
+
+	.waifu i {
+		color: grey;
+		font-size: 30px;
+	}
+
+	.waifu i.active {
+		color: yellow;
+	}
+
+	.avatar {
+		width: 200px;
+		height: 200px;
+	}
+
+	@media screen and (max-width: 1366px) {
+		body {
+			background-color: red;
+		}
+		body::after {
+			content: "SMALL SCREEN SIZE";
+			color: white;
+		}
+		.container {
+			width: 100%;
+		}
+		.card {
+			width: 100%;
+		}
+		.waifu {
+			display: block;
+			width: 100%;
+			margin: 0;
+			text-align: center;
+		}
+
+		.img-container {
+			display: block;
+			width: 100%;
+			margin: 0;
+		}
+
+		.img-container img {
+			display: block;
+			margin: auto;
+		}
+	}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="card female">
+	<div class="waifu">
+		<div class="w-name">
+			Iwakura Lain
+		</div>
+		<i class="fa fa-star active"></i>
+		<i class="fa fa-star active"></i>
+		<i class="fa fa-star active"></i>
+		<i class="fa fa-star"></i>
+		<i class="fa fa-star"></i>
+	</div>
+	<div class="img-container">
+		<img class="avatar" src="images/lain.jpg" alt="Avatar">
+	</div>
+</div>
+<div class="card male">
+	<div class="waifu">
+		<div class="w-name">
+			Fujii Yakumo
+		</div>
+		<i class="fa fa-star active"></i>
+		<i class="fa fa-star active"></i>
+		<i class="fa fa-star"></i>
+		<i class="fa fa-star"></i>
+		<i class="fa fa-star"></i>
+	</div>
+	<div class="img-container">
+		<img class="avatar" src="images/yakumo.jpg" alt="Avatar">
+	</div>
+</div>
+
+</div>
+</body>
+</html>

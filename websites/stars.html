@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Vertical Alignment</title>
+<meta charset="utf8">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+<style>
+	.container {
+		padding: 20px 20px;
+		padding-top: 10px;
+		width: 900px;
+		margin: auto;
+		border: 3px solid #eee;
+	}
+
+	.waifu {
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 8px;
+	}
+
+	.rank {
+		color: grey;
+		font-size: 20px;
+	}
+
+	.rank.active {
+		color: yellow;
+	}
+
+	.panel {
+		margin-top: 10px;
+		padding: 16px 16px;
+		background-color: lightblue;
+		border-radius: 10px;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="panel">
+		<div class="waifu">
+			Iwakura Lain
+		</div>
+		<div>
+			<i class="rank fa fa-star active"></i>
+			<i class="rank fa fa-star active"></i>
+			<i class="rank fa fa-star"></i>
+		</div>
+	</div>
+	<div class="panel">
+		<div class="waifu">
+			Kurata Ami
+		</div>
+		<div>
+			<i class="rank fa fa-star active"></i>
+			<i class="rank fa fa-star"></i>
+			<i class="rank fa fa-star"></i>
+		</div>
+	</div>
+	<div class="panel">
+		<div class="waifu">
+			Kousaka Reina
+		</div>
+		<div>
+			<i class="rank fa fa-star active"></i>
+			<i class="rank fa fa-star active"></i>
+			<i class="rank fa fa-star active"></i>
+		</div>
+	</div>
+</div>
+</body>
+</html>

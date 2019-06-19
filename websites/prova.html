@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Vertical Alignment</title>
+<meta charset="utf8">
+<style>
+	.top-nav {
+		width: 80%;
+		margin: auto;
+		background-color: #ddd;
+		overflow: hidden;		/* needed for correct sizing of the nav */
+	}
+
+	.top-nav a {
+		display: inline-block;
+		color: white;
+		background-color: lightblue;
+		font-size: 20px;
+		padding: 20px;
+		text-decoration: none;
+		float: left;
+	}
+
+	input[type=text] {
+		border: none;
+		padding: 10px;
+		font-size: 20px;
+		margin-top: 10px;
+		margin-right: 20px;
+		float: right;
+	}
+</style>
+</head>
+<body>
+<div class="top-nav">
+	<a href="#">Link 1</a>
+	<a href="#">Link_2</a>
+	<input type="text" placeholder="Search">
+</div>
+</body>
+</html>
