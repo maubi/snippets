@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AngularJS Pagination</title>
+<meta charset="utf-8">
+<script src="js/angular.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<style>
+</style>
+</head>
+<body ng-app="pagApp" ng-controller="mainCtrl as main">
+<nav class="navbar navbar-default navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">WaifuDB</a>
+		</div>
+	</div>
+</nav>
+<div class="container">
+<div class="panel-group">
+	<div class="panel panel-primary" ng-repeat="waifu in main.page">
+		<div class="panel-body text-center">{{waifu}}</div>
+	</div>
+</div>
+<div class="pag-container text-center">
+	<ul class="pagination">
+		<li
+			ng-repeat="pageNum in main.pages"
+			ng-click="main.page = main.getPage(pageNum)"
+			ng-class="{active: pageNum == main.pageActive}">
+			<a href="#">{{pageNum}}</a>
+		<li>
+	</ul>
+</div>
+<div class="pag-buttons text-center">
+	#/page:
+	<button
+		class="btn btn-default"
+		ng-class="{active: main.pageSize == 3}"
+		ng-click="main.pageSize = 3; main.calcPages(); main.page = main.getPage(0)">
+		3
+	</button>
+	<button
+		class="btn btn-default"
+		ng-class="{active: main.pageSize == 5}"
+		ng-click="main.pageSize = 5; main.calcPages(); main.page = main.getPage(0)">
+		5
+	</button>
+	<button
+		class="btn btn-default"
+		ng-class="{active: main.pageSize == 10}"
+		ng-click="main.pageSize = 10; main.calcPages(); main.page = main.getPage(0)">
+		10
+	</button>
+</div>
+
+<div>
+
+<script>
+	var pagApp = angular.module('pagApp', []);
+	pagApp.controller('mainCtrl', function() {
+		var main = this;
+		main.waifus = [
+			'Lain', 'Ami', 'Kaya', 'Chihaya', 'Violet', 'Madoka', 'Sayaka', 'Chitose', 'Ika', 'Revy', 'Tanya',
+			'Shiina', 'Kayo', 'Tamaki', 'Teru', 'Ayame'
+		];
+		main.pageSize = 3;
+		main.pageActive = 0;
+		main.pages = [0];
+
+		main.calcPages = function() {
+			main.pages = [];
+			for(var i = 0; i < Math.ceil(main.waifus.length / main.pageSize); i++) {
+				main.pages.push(i);
+			}
+			main.pages.splice(0, 0, '<');
+			main.pages.splice(main.pages.length, 0, '>');
+		};
+
+		main.getPage = function(idx) {
+			if(idx == '>') {
+				idx = main.pageActive + 1;
+			} else if(idx == '<') {
+				idx = main.pageActive - 1;
+			}
+
+			var minPage = main.pages[1];
+			var maxPage = main.pages[main.pages.length - 2];
+
+			if(idx > maxPage) {
+				idx = maxPage;
+			} else if(idx < minPage) {
+				idx = minPage;
+			}
+
+			main.pageActive = idx;
+
+			var start = idx * main.pageSize;
+			var end = start + main.pageSize;
+			return main.waifus.slice(start, end);
+		}
+
+		main.calcPages();
+		main.page = main.getPage(0);
+	});
+</script>
+</body>
+</html>

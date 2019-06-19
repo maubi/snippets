@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ngDialog</title>
+<meta charset="utf-8">
+<script src="js/angular.js"></script>
+<script src="js/ngDialog/js/ngDialog.js"></script>
+<script src="js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="js/ngDialog/css/ngDialog.css" />
+<link rel="stylesheet" type="text/css" href="js/ngDialog/css/ngDialog-theme-default.css" />
+<link rel="stylesheet" type="text/css" href="js/ngDialog/css/ngDialog-theme-plain.css" />
+</head>
+<body ng-app="myApp">
+<div id="container" ng-controller="myCtrl">
+	<button id="btnOpenDialog" ng-click="chooseWaifu()">CHOOSE WAIFU</button>
+	<button ng-click="waifu=''">CLEAR</button>
+	<p>
+		<h2 ng-show="waifu"><span style="background-color:red;color:white">{{waifu|uppercase}}</span> is your waifu.</h2>
+	</p>
+</div>
+<script>
+var myApp = angular.module('myApp', ['ngDialog']);
+myApp.controller('waifuCtrl', function($scope) {
+	$scope.closeMe = function() {
+		$scope.closeThisDialog(0);
+	};
+
+	$scope.confirmMe = function() {
+		var waifu = $('input[name=waifuSel]:checked').val();
+		$scope.confirm(waifu);
+	};
+
+	$scope.disableConfirm = true;
+});
+myApp.controller('myCtrl', function($scope, ngDialog) {
+	$scope.chooseWaifu = function() {
+		ngDialog.openConfirm({
+			template: ' <div style="text-align:center;"><h1>WAIFU SELECT</h1><form><input type="radio" name="waifuSel" value="Lain" ng-click="disableConfirm=false">Lain <input type="radio" name="waifuSel" value="Sayaka" ng-click="disableConfirm=false">Sayaka</form><button ng-click="closeMe()">CANCEL</button><button ng-disabled="disableConfirm" ng-click="confirmMe()">OK</button></div> ',
+			plain: true,
+			className: 'ngdialog-theme-plain',
+			controller: 'waifuCtrl'
+		})
+		.then(function(waifu) {
+			console.log(waifu);
+			$scope.waifu = waifu;
+		});	
+	};
+});
+</script>
+</body>
+</html>

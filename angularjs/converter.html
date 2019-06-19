@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Numbers Converter</title>
+<script src="js/angular.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<style>
+	body {
+		margin-top: 20px;
+	}
+
+	.monospace {
+		font-family: monospace;
+	}
+</style>
+</head>
+<body ng-app="numApp" ng-controller="mainCtrl as main">
+<div class="container text-center monospace">
+<h1>NUMBER CONVERTER</h1>
+<div class="form-group">
+	<label for="decimal">Decimal</label>
+	<input type="text" class="form-control input-lg" id="decimal" ng-model="main.decimal"
+		ng-change="main.calc(main.decimal, 10)"
+	>
+</div>
+
+<div class="form-group">
+	<label for="octal">Octal</label>
+	<input type="text" class="form-control input-lg" id="octal" ng-model="main.octal"
+		ng-change="main.calc(main.octal, 8)"
+	>
+</div>
+
+<div class="form-group">
+	<label for="hexadecimal">Hexadecimal</label>
+	<input type="text" class="form-control input-lg" id="hexadecimal" ng-model="main.hexadecimal"
+		ng-change="main.calc(main.hexadecimal, 16)"
+	>
+</div>
+
+<div class="form-group">
+	<label for="binary">Binary</label>
+	<input type="text" class="form-control input-lg" id="binary" ng-model="main.binary"
+		ng-change="main.calc(main.binary, 2)"
+	>
+</div>
+
+</div>
+
+<script>
+const numApp = angular.module('numApp', []);
+numApp.controller('mainCtrl', function() {
+	const main = this;
+
+	main.calc = function(s, b) {
+		const d = parseInt(s, b);
+
+		if(isNaN(d)) {
+			return;
+		}
+
+		switch(b) {
+			case 2:
+				main.decimal = d.toString(10);
+				main.octal = d.toString(8);
+				main.hexadecimal = d.toString(16);
+				break;
+			case 8:
+				main.decimal = d.toString(10);
+				main.hexadecimal = d.toString(16);
+				main.binary = d.toString(2);
+				break;
+			case 10:
+				main.octal = d.toString(8);
+				main.hexadecimal = d.toString(16);
+				main.binary = d.toString(2);
+				break;
+			case 16:
+				main.decimal = d.toString(10);
+				main.octal = d.toString(8);
+				main.binary = d.toString(2);
+				break;
+			default:
+				return;
+		}
+	}
+});
+</script>
+</body>
+</html>
+
+
+
+
+

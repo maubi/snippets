@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WAIFU DB</title>
+<meta	charset="utf-8">
+<script	src="js/angular.js"></script>
+<link	rel="stylesheet" href="css/bootstrap.css">
+<link	rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<style>
+	body {
+		margin-top: 20px;
+	}
+	.panel-body {
+		font-size: 2rem;
+	}
+
+	#waifuContainer {
+		height: 500px;
+		overflow: auto;
+		padding: 15px;
+		margin-bottom: 20px;
+		background-color: #EEE;
+	}
+	.err-msg {
+		color: red;
+	}
+
+	.relative {
+		position: relative;
+	}
+
+	.abs-right {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		right: 0.5em;
+	}
+
+	.abs-middle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.abs-left {
+		position: absolute;
+		top: 50%;
+		left: 0.5em;
+		transform: translate(0, -50%);
+	}
+
+	.panel-heading {
+		font-weight: bold;
+		font-size: 2rem;
+	}
+
+	#input-add {
+	/*
+		background-color: lightgrey;
+		color: grey;
+		border: 2px solid green;
+	*/
+		width: 100px;
+		transition: ease-in-out, width .35s ease-in-out;
+		margin-right: 1rem;
+	}
+
+	#input-add:focus {
+	/*
+		background-color: white;
+		color: black;
+	*/
+		width: 250px;
+	}
+
+	input[type=text] {
+		display: inline-block;
+	}
+
+	h1 {
+		width: 100%;
+		background-color: #444;
+		color: white;
+		text-align: center;
+	}
+
+</style>
+</head>
+<body ng-app="waifuApp" ng-controller="MainCtrl as main">
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1>WAIFU DB</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div id="waifuContainer">
+			<div class="panel-group">
+				<div class="panel panel-primary text-center" ng-repeat="waifu in main.waifus">
+					<div class="panel-heading"><span>- {{$index|padNumber:3}} -<span></div>
+					<div class="panel-body relative" style="padding: 30px;">
+						<span class="abs-middle">{{waifu}}</span>
+						<button
+							class="abs-right"
+							ng-click="main.del($index)">
+								<i class="fa fa-minus"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="form-group">
+			<input class="form-control" id="input-add" type="text" ng-model="main.waifuNew" ng-keyup="main.keyup($event)">
+			<button ng-click="main.add()"><i class="fa fa-plus"></i></button>
+			</div>
+			<p class="err-msg" ng-show="main.errMsg">{{main.errMsg}}</p>
+
+		</div>
+	</div>
+</div>
+<script>
+const waifuApp = angular.module('waifuApp', []);
+waifuApp.filter('padNumber', function() {
+	return function(n, z) {
+		let s = n.toString();
+		if(s.length != z) {
+			let delta = z - s.length;
+			s = '0'.repeat(delta) + s;
+		}
+		return s;
+	}
+});
+waifuApp.service('WaifuSrv', function() {
+	this.addWaifu = function(waifu, ctrl) {
+		if(!waifu) {
+			console.log('waifuSrv - no waifu to add');
+			ctrl.errMsg = 'Cannot add undefined waifu';
+		}
+		else if(ctrl.waifus.indexOf(waifu) == -1) {
+			console.log('waifuSrv - adding waifu');
+			ctrl.waifus.push(waifu);
+			ctrl.errMsg = '';
+		} else {
+			console.log('waifuSrv - waifu already in DB');
+			ctrl.errMsg = 'Waifu is already present in the DB';
+		}
+	}
+	this.delWaifu = function(idx, ctrl) {
+		if(idx < 0 || idx >= ctrl.waifus.length) {
+			ctrl.errMsg = 'IDX out of range';
+		} else {
+			console.log('waifuSrv - deleting waifu');
+			ctrl.waifus.splice(idx, 1);
+		}
+	}
+});
+
+waifuApp.controller('MainCtrl', function(WaifuSrv) {
+	var main = this;
+	main.waifus = [];
+	main.add = function() {
+		WaifuSrv.addWaifu(main.waifuNew, main);
+	};
+	main.del = function(idx) {
+		WaifuSrv.delWaifu(idx, main);
+	};
+	main.keyup = function(e) {
+		if(e.keyCode == 13) {
+			WaifuSrv.addWaifu(main.waifuNew, main);
+		}
+	};
+});
+
+</script>
+</body>
+</html>

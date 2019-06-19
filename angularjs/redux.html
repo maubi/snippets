@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Redux Test</title>
+<meta charset="utf-8">
+<script src="js/redux.js"></script>
+<script src="js/angular.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body ng-app="rdxApp" ng-controller="mainCtrl as main">
+<div class="container text-center">
+	<h1 style="background-color: #444; color: white">REDUX COUNTER APP</h1>
+	<button class="btn btn-primary" ng-click="main.inc()">INC</button>
+	<button class="btn btn-primary" ng-click="main.dec()">DEC</button>
+	<div class="jumbotron" style="margin-top: 20px">
+		<h2>{{main.val}}</h2>
+	</div>
+</div>
+<script>
+let rdxApp = angular.module('rdxApp', []);
+rdxApp.controller('mainCtrl', function() {
+	let main = this;
+	main.counter = function(state = 0, action) {
+		switch(action.type) {
+			case 'INC':
+				return state + 1;
+				break;
+			case 'DEC':
+				return state - 1;
+				break;
+			default:
+				return state;
+		}
+	};
+
+	main.store = window.Redux.createStore(main.counter);
+
+	main.inc = function() {
+		main.store.dispatch({type: 'INC'});
+		main.val = main.store.getState();
+	}
+
+	main.dec = function() {
+		main.store.dispatch({type: 'DEC'});
+		main.val = main.store.getState();
+	}
+
+	main.store.subscribe(() => console.log(main.store.getState()));
+	main.val = main.store.getState();
+});
+
+
+</script>
+</body>
+</html>
+
+
+
+

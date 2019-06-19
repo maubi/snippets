@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Viewport Size</title>
+<meta charset="utf-8">
+<script src="js/angular.js"></script>
+<style>
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+
+	body {
+		margin-top: 20px;
+		font-size: 20px;
+		font-family: monospace;
+	}
+
+	button {
+		font-size: 20px;
+		font-family: monospace;
+		padding: 5px;
+	}
+
+	#btnContainer {
+		margin-bottom: 20px;
+	}
+
+	.container {
+		width: 900px;
+		margin:auto;
+		text-align: center;
+		/*border: 1px solid green;*/
+		background-color: #EEE;
+		padding: 15px;
+	}
+
+	#sizeTable {
+		width: 50%;
+		margin: auto;
+		background-color: white;
+	}
+
+	#cellWidth, #cellHeight {
+		width: 50%;
+	}
+</style>
+</head>
+<body ng-app="vpApp" ng-controller="mainCtrl as main">
+<div class="container">
+	<h1>VIEWPORT SIZE CALCULATOR</h1>
+	<div id="btnContainer">
+		<button ng-click="main.getSize()">UPDATE</button>
+	</div>
+	<table id="sizeTable">
+		<tr>
+			<th id="cellWidth">WIDTH</th>
+			<th id="cellHeight">HEIGHT</th>
+		</tr>
+		<tr>
+			<td>{{main.width}}</td>
+			<td>{{main.height}}</td>
+		</tr>
+	</table>
+</div>
+<script>
+let vpApp = angular.module('vpApp', []);
+vpApp.controller('mainCtrl', function() {
+	let main = this;
+
+	main.width = 'N/A';
+	main.height = 'N/A';
+
+	main.getSize = function() {
+		let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		main.width = w;
+		main.height = h;
+	}
+
+	main.getSize();
+});
+</script>
+</body>
+</html>

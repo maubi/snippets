@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Choose Your WAIFU</title>
+<meta charset="utf-8">
+<script src="js/angular.js"></script>
+<script src="js/angular-animate.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<style>
+	body {
+		margin-top: 20px;
+	}
+
+	.header, .waifu-result {
+		font-family: monospace;
+	}
+
+	.header {
+		padding: 10px;
+		background-color: #444;
+		color: white;
+	}
+
+	h1 {
+		opacity: 1;
+		transition: opacity ease-in-out 1s
+	}
+
+	h1.ng-hide {
+		opacity: 0;
+	}
+
+	.container .waifu-result {
+		margin-top: 80px;
+		border-radius: 30px;
+	}
+
+	.action button {
+		margin-top: 30px;
+		width: 100%;
+		padding: 10px;
+		font-size: 20px;
+		border-radius: 20px;
+		box-shadow: 0px 5px 5px grey 
+	}
+</style>
+</head>
+<body ng-app="waifuApp" ng-controller="mainCtrl as main">
+<div class="container">
+	<div class="row">
+		<div class="col-12 text-center">
+			<h1 class="header">CHOOSE YOUR OWN WAIFU</h1>
+			<div class="action">
+				<button
+					class="btn btn-primary"
+					ng-click="main.getWaifu()"
+					ng-show="!main.waifu">
+					GO!
+				</button>
+				<button
+					class="btn btn-primary"
+					ng-click="main.waifu = ''"
+					ng-show="main.waifu">
+					CLEAR
+				</button>
+			</div>
+			<div class="jumbotron waifu-result" ng-show="main.waifu">
+				<h1 ng-show="main.waifu">{{main.waifu | uppercase}}</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+let waifuApp = angular.module('waifuApp', ['ngAnimate']);
+waifuApp.controller('mainCtrl', function() {
+	let main = this;
+
+	main.waifus = [
+	'Lain Iwakura',
+	'Ami Kurata',
+	'Sayaka Miki',
+	'Maho Nishizumi',
+	'Violet Evergarden',
+	'Takaya Noriko',
+	'Homura Akemi',
+	'Tanya von Degurechaff',
+	'Tamaki Honda',
+	'Shiina Murakami',
+	'Utaha Kasumigaoka',
+	'Eriri Sawamura Spencer',
+	'Madoka Ayukawa',
+	'Rei Ayanami',
+	'Chitose Karasuma',
+	'Yuniko Kozuki',
+	'Kaoruko Moeta',
+	'Ika Musume',
+	'Umiko Ahagon',
+	'Momoka',
+	'Umaru',
+	'Mya Alice',
+	'Arisu',
+	'Akko Kagari',
+	'Diana Cavendish',
+	'Sucy Manbavaran',
+	'Natsu',
+	'Chise Hatori',
+	'Ai',
+	'Mai Kawashima',
+	'Kurisu Makise',
+	'Reina Kousaka',
+	'Sayuki Kuroda',
+	'Kuroyukihime',
+	'San',
+	'Shiina Mashiro',
+	'Vigne',
+	'Satania',
+	'Gabu',
+	'Hikaru Hiyama',
+	'Asuka Souryuu Langley',
+	'Deedlit',
+	'Lynn Minmay',
+	'Misa Hayase',
+	'Enika Cellini',
+	'Megumin',
+	'Chihaya Ayase',
+	'Ema Yasuhara',
+	'Viktoriya Ivanovna Serebryakov',
+	'Miho Nishizumi',
+	'Momo Minamoto',
+	'Michiru Hyoudou',
+	'Megumi Katou',
+	'Tamaki Honda',
+	'Shiina Murakami',
+	'Ayame Seki',
+	'Kayo Fujikawa',
+	'Yumine Fuda',
+	'Kaya Ayase',
+	'Kanna',
+	'Kanade Oe',
+	'Rin',
+	'Reika Ryuzaki',
+	'Shinobu Wakamiya',
+	'Caska',
+	'Coco',
+	'Aoi Yukimura',
+	'Hinata Kuraue',
+	'Pai',
+	'Parvati',
+	'Saeko Nogami',
+	'Yuzu Aihara',
+	'Mei Aihara',
+	'Kyoko Otonashi',
+	'Yuuko Amasawa'
+	];
+
+	this.getWaifu = function() {
+		const d = new Date();
+		const m = d.getMilliseconds();
+		const l = main.waifus.length;
+		const i = m % l;
+		console.log(m, l, i);
+		main.waifu = main.waifus[i];
+	}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AngularJS Services</title>
+<meta charset="utf-8" />
+<script src="js/angular.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+	Waifu: <input type="text" ng-model="waifu">
+	<button ng-click="kissHer()" id="kiss">KISS</button>
+	<button ng-click="kiss2Her()" id="kiss2">KISS2</button>
+	{{msg}}
+</div>
+<script>
+var myApp = angular.module('myApp', []);		// function
+myApp.service('kiss', function() {
+	this.kiss = function(waifu) {
+		console.log('kissed!');
+		return 'You kissed ' + waifu;
+	}
+})
+
+myApp.factory('kiss2', function() {				// factory
+	return function(waifu) {
+		console.log('kissed2!');
+		return 'You kissed2 ' + waifu;
+	}
+})
+
+myApp.controller('myCtrl', function($scope, kiss, kiss2) {
+	$scope.kissHer = function() {
+		console.log('kiss Her!');
+		$scope.msg = kiss.kiss($scope.waifu);
+	}
+
+	$scope.kiss2Her = function() {
+		console.log('kiss2 Her!');
+		$scope.msg = kiss2($scope.waifu);
+	}
+});
+</script>
+</body>
+</html>
