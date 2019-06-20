@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Placemark>
+    <name>Tokyo</name>
+    <description></description>
+    <Point>
+      <coordinates>139.839478,35.652832,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Kumamoto</name>
+    <description></description>
+    <Point>
+      <coordinates>130.44,32.47,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Nagano</name>
+    <description></description>
+    <Point>
+      <coordinates>138.11,36.38,0</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Osaka</name>
+    <description></description>
+    <Point>
+      <coordinates>135.30,34.41,0</coordinates>
+    </Point>
+  </Placemark>
+</kml>
