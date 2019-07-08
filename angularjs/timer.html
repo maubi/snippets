@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Timer</title>
+<meta charset="utf-8">
+<script src="js/angular.js"></script>
+<style>
+	body {
+		font-size: 2em;
+		font-family: monospace;
+	}
+	.container {
+		width: 60%;
+		text-align: center;
+		background-color: lightblue;
+		margin: auto;
+		padding: 15px;
+	}
+	.value {
+		background-color: black;
+		color: white;
+		text-align: center;
+	}
+</style>
+</head>
+<body ng-app="timerApp">
+<div ng-controller="TimerCtrl as main">
+<div class="container">
+	<div class="value">{{main.value}}</div>
+	<button ng-click="main.startTimer()">START TIMER</button>
+	<button ng-click="main.stopTimer()">STOP TIMER</button>
+</div>
+</div>
+
+<script>
+var timerApp = angular.module('timerApp', []);
+timerApp.controller('TimerCtrl', function($scope, $interval) {
+	var main = this;
+	main.value = 0;
+	var myTimer;
+	
+	main.startTimer = function() {
+		myTimer = $interval(function() {
+			main.value += 1;
+		}, 50);
+	}
+	main.stopTimer = function() {
+		$interval.cancel(myTimer);
+		main.value = 0;
+	}
+
+	$scope.$on('destroy', function() {
+		main.stopTimer();
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="greetApp">
+<head>
+<title>Greeting</title>
+<meta charset="utf-8">
+<script src="js/angular.js"></script>
+</head>
+<body>
+	<extra2></extra2>
+	<greet></greet>
+	<waifus-list></waifus-list>
+	<extra1></extra1>
+	<extra1></extra1>
+<script>
+	var greetApp = angular.module('greetApp', ['waifus', 'extra']);
+	var waifus = angular.module('waifus', []);
+	var extra = angular.module('extra', []);
+
+	greetApp.component('greet', {
+		template: 'Hello, {{$ctrl.user}}',
+		controller: function() {
+			this.user = 'Lain';
+		}
+	});
+	waifus.component('waifusList', {
+		template: '<h2>Waifus</h2><ul><li ng-repeat="waifu in $ctrl.waifus">{{waifu}}</li>',
+		controller: function() {
+			this.waifus = ['Ami', 'Sayaka', 'Coco']; 
+		}
+	});
+	extra.component('extra1', {
+		template: '<h2>{{$ctrl.name}}</h2><button ng-click="$ctrl.name = \'\'">CLEAR</button>',
+		controller: function() {
+			this.name = 'KAWASHIMA AMI';
+		}
+	});
+	extra.component('extra2', {
+		template: '<h1>WAIFUS ARE REAL ({{$ctrl.year}})</h1>',
+		controller: function() {
+			this.year = 2019;
+		}
+	});
+</script>
+</body>
+</html>

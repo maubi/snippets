@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Trello Clone</title>
+<meta charset="utf-8">
+<script src="js/jquery.js"></script>
+<script src="js/angular.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<style>
+/*
+	.to-do {
+		background-color: red;
+	}
+	.doing {
+		background-color: orange;
+	}
+	.completed {
+		background-color: green;
+	}
+*/
+	.to-do, .doing, .completed {
+		background-color: lightblue;
+		padding: 15px;
+		border: 2px solid black;
+		min-height: 300px;
+		/*margin: 5px;*/
+	}
+	.title {
+		padding: 10px;
+	}
+	.to-do .title {
+		background-color: red;
+	}
+	.doing .title {
+		background-color: orange;
+	}
+	.completed .title {
+		background-color: green;
+	}
+	.adder {
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+	}
+</style>
+</head>
+<body ng-app="trello" ng-controller="MainCtrl as main">
+<div class="container">
+	<div class="row adder">
+		<input type="text" class="form-control" placeholder="New Task" ng-model="main.newTask">
+		<button type="button" ng-click="main.addTask()">+</button>
+	</div>
+	<div class="row tasks">
+		<div class="col-lg-4 to-do" ng-on-drop="main.drop($event)" ng-on-dragover="main.allowDrop($event)">
+			<h2 class="title">TO-DO</h2>
+			<my-card
+				ng-repeat="task in main.tasks | filter: {status: 0}"
+				title={{task.title}}
+				id={{task.id}}
+			>
+			</my-card>
+		</div>
+		<div class="col-lg-4 doing" ng-on-drop="main.drop($event)" ng-on-dragover="main.allowDrop($event)">
+			<h2 class="title">DOING</h2>
+			<my-card
+				ng-repeat="task in main.tasks | filter: {status: 1}"
+				title={{task.title}}
+				id={{task.id}}
+			>
+			</my-card>
+		</div>
+		<div class="col-lg-4 completed" ng-on-drop="main.drop($event)" ng-on-dragover="main.allowDrop($event)">
+			<h2 class="title">COMPLETED</h2>
+			<my-card
+				ng-repeat="task in main.tasks | filter: {status: 2}"
+				title={{task.title}}
+				id={{task.id}}
+			>
+			</my-card>
+		</div>
+	</div>
+</div>
+
+<script>
+	var trello = angular.module('trello', []);
+	trello.service('Task', function() {
+		var tasks = [
+			{
+				title: 'Reading The Game vol. 2',
+				id: 0,
+				status: 0
+			},
+			{
+				title: 'Reading Bloom Into You vol. 1',
+				id: 1,
+				status: 0
+			},
+			{
+				title: 'Walking from home to train station',
+				id: 2,
+				status: 2
+			},
+			{
+				title: 'Meditating for at least 15 minutes',
+				id: 3,
+				status: 1
+			}
+		];
+		this.getMaxId = function() {
+			var max = -Infinity;
+			for(let i = 0; i < tasks.length; i++) {
+				if(tasks[i].id > max) {
+					max = tasks[i].id;
+				}
+			}
+			return max;
+		};
+		this.addTask = function(title) {
+			var maxId = this.getMaxId();
+			tasks.push({
+				title: title,
+				id: maxId + 1,
+				status: 0
+			});
+		};
+		this.drag = function drag(ev) {
+			console.log('DRAG!');
+			console.log(ev);
+			ev.originalEvent.dataTransfer.setData('taskID', ev.target.id);
+		};
+
+		this.drop = function drop(ev) {
+			ev.preventDefault();
+			var taskID = ev.originalEvent.dataTransfer.getData('taskID');
+			var id = parseInt(taskID.replace('task', ''));
+			var target = ev.target;
+			console.log({
+				target: target,
+				taskID: taskID,
+				id: id
+			});
+			var todo = $(target).closest('.to-do').length;
+			var doing = $(target).closest('.doing').length;
+			var completed = $(target).closest('.completed').length;
+
+			console.log({todo, doing, completed});
+			tasks.forEach(function(task) {
+				if(task.id === id) {
+					if(doing) {
+						task.status = 1;
+					}
+					if(todo) {
+						task.status = 0;
+					}
+					if(completed) {
+						task.status = 2;
+					}
+				}
+			});
+		};
+
+		this.allowDrop = function allowDrop(ev) {
+			ev.preventDefault();
+		};
+		this.getTasks = function() {
+			return tasks;
+		};
+		this.getTaskById = function(id) {
+			for(let i = 0; i < tasks.length; i++) {
+				if(tasks[i].id === id) {
+					return tasks[i];
+				}
+			}
+			return null;
+		}
+	});
+	trello.controller('MainCtrl', function(Task) {
+		var main = this;
+		main.tasks = Task.getTasks();
+		main.drop = function(e) {
+			Task.drop(e);
+		};
+		main.allowDrop = function(e) {
+			Task.allowDrop(e);
+		};
+		main.addTask = function() {
+			Task.addTask(main.newTask);
+		};
+	});
+	trello.directive('myCard', function(Task) {
+		return {
+			scope: {
+				title: '@',
+				id: '@'
+			},
+			link: function(scope, element, attrs) {
+				scope.drag = Task.drag
+			},
+			template: '<div id="task{{id}}" draggable="true" ng-on-dragstart="drag($event)" class="panel panel-default"><div class="panel-body"><h3>{{title}}</h3></div></div>'
+		};
+	});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
