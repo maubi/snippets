@@ -1,0 +1,39 @@
+$primary_1: #FF00FF;
+$primary_2: #00FFFF;
+$primary_3: #808080;
+
+@mixin fg_std {
+	color: white;
+}
+
+.button-basic {
+	border: none;
+	text-align: center;
+	padding: 15px 30px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.button-danger {
+	@extend .button-basic;
+	background-color: red;
+	color: white;
+}
+
+.button-success {
+	@extend .button-basic;
+	background-color: green;
+	color: white;
+}
+
+h1 {
+	@include fg_std;
+	background-color: $primary_1;
+}
+
+li {
+	@include fg_std;
+	background-color: $primary_2;
+}
+
+@debug mixin-exists("fg_std")
